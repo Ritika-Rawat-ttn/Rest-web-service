@@ -18,6 +18,7 @@ public class Employee {
 
 
     //Created Employee Bean
+    //Q2
     public Employee(Integer id, String name, Integer age) {
         super();
         this.id = id;

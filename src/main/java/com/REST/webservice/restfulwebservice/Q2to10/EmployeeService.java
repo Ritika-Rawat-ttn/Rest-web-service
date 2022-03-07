@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 
 //Service to perform diffferent operation related to employee
+//Q-2
 @Component
 public class EmployeeService {
     private static List<Employee> employees=new ArrayList<>();
@@ -38,6 +39,7 @@ public class EmployeeService {
         return null;
         }
 
+        //Deleting element Q-7
     public Employee deletebyId(int id) {
         Iterator<Employee> iterator=employees.iterator();
             while(iterator.hasNext()){
@@ -50,7 +52,7 @@ public class EmployeeService {
         return null;
     }
 
-    //For put request
+    //For put request Q-8
     public String updateid(Employee employee) {
         //exist in the employye -yes else nob
 

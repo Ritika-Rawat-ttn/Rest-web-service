@@ -22,7 +22,9 @@ public class EmployeeResource {
 
     //Implement GET request for Employee to get list of employees.
     //retriveing all the list of employee.
+//GET Mapping-The @GetMapping annotated methods in the @Controller annotated classes handle the HTTP GET requests matched with given URI expression.
 
+//Q3-
     @GetMapping("/employee")
     public List<Employee> retriveAllUsers(){
 
@@ -33,6 +35,7 @@ public class EmployeeResource {
 
     //Implement GET http request using path variable top get one employee.
     //Through Path Variable we can set path for respective finding elemnet.
+    //Q4
 
     @GetMapping("/employee/{id}")
     public Employee retrieveUser(@PathVariable int id) {
@@ -44,6 +47,9 @@ public class EmployeeResource {
     }
 
     //Delete http request for Employee to delete employee
+    //Q-7
+
+
     @DeleteMapping("/employee/{id}")
     public Employee deleteUser(@PathVariable int id) {
         Employee employee = service.deletebyId(id);
@@ -56,6 +62,9 @@ public class EmployeeResource {
 
     //Created Post as CreatEmployee
     //Details of all CreateEmployee
+    //PoST mapping-@PostMapping is used for HTTP Post request.
+    //Q-5
+
 
     @PostMapping("/employee")
     public ResponseEntity<Object>CreateEmployee(@Validated @RequestBody Employee employee){
@@ -73,6 +82,9 @@ public class EmployeeResource {
 
 
     }
+
+    //PUt mapping - PUT HTTP method is used to modify/update a resource where the client sends data that updates the entire resource.
+    //Q-8
     @PutMapping("/updateid")
     public  String updateid(@RequestBody Employee employee){
        return service.updateid(employee);
