@@ -1,11 +1,15 @@
 package com.REST.webservice.restfulwebservice.Q2to10;
 
+import com.sun.istack.NotNull;
 import org.springframework.boot.convert.DataSizeUnit;
+
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 
 public class Employee {
     private Integer id;
 
-
+    @Size(min =3, message="name has atleaste 1 char")
     private  String name;
     private  Integer age;
 

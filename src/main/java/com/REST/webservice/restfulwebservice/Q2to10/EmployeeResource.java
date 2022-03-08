@@ -7,6 +7,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
@@ -67,11 +68,11 @@ public class EmployeeResource {
 
 
     @PostMapping("/employee")
-    public ResponseEntity<Object>CreateEmployee(@Validated @RequestBody Employee employee){
+    public ResponseEntity<Object>CreateEmployee(@Valid @RequestBody Employee employee){
         Employee SavedEmployee = service.save(employee);
 
         //CREATED
-        //URI in comment is /employee/{id} is now replaced by SavedEmployee.get.id()
+        //URI in comment is and appending it  /employee/{id} than replaceing by SavedEmployee.get.id()
 
         //setting uri
         URI location= ServletUriComponentsBuilder
@@ -85,9 +86,11 @@ public class EmployeeResource {
 
     //PUt mapping - PUT HTTP method is used to modify/update a resource where the client sends data that updates the entire resource.
     //Q-8
-    @PutMapping("/updateid")
-    public  String updateid(@RequestBody Employee employee){
-       return service.updateid(employee);
+    @PutMapping
+    public Employee updateEmployees(@RequestBody Employee emp,@PathVariable int id){
+        this.service.updateData(emp,id);
+        return emp;
+
     }
 
 

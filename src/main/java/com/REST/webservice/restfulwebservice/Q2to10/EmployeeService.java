@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 //Service to perform diffferent operation related to employee
 //Q-2
@@ -20,8 +21,11 @@ public class EmployeeService {
 
     }
     public List<Employee> findAll(){
+
         return employees;
     }
+
+
     public Employee save(Employee employee){
         if(employee.getId()==null){
             employee.setId(++employeesCount);
@@ -53,22 +57,15 @@ public class EmployeeService {
     }
 
     //For put request Q-8
-    public String updateid(Employee employee) {
-        //exist in the employye -yes else nob
 
-
-        boolean resourceFound=false;
-        for (Employee employees:employees){
-            if(employee.getId()==employee.getId()){
-                employee.setId(employee.getId());
-                employee.setName(employee.getName());
-                employee.setAge(employee.getAge());
+    public void updateData(Employee e,int id){
+        employees=employees.stream().map(v ->{
+            if(v.getId()== id){
+                v.setName("Ritika");
+                v.setAge(34);
             }
-        }
-        if (!resourceFound){
-            employees.add(new Employee());
-            return "yo";
-        }
-        return "item updated sucessfully";
+            return v;
+
+        }).collect(Collectors.toList());
     }
 }
